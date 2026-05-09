@@ -1,5 +1,7 @@
 package aircompany;
 
+import java.util.Objects;
+
 public class Passenger {
     private int id;
     private boolean has_ticket;
@@ -49,5 +51,17 @@ public class Passenger {
 
     public int getFlight_id() {
         return flight_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Passenger passenger = (Passenger) o;
+        return id == passenger.id && has_ticket == passenger.has_ticket && age == passenger.age && gender == passenger.gender && flight_id == passenger.flight_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, has_ticket, age, gender, flight_id);
     }
 }
